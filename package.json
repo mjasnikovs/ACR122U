@@ -1,0 +1,64 @@
+{
+    "name": "acr122u",
+    "version": "0.1.0",
+    "description": "Raw USB driver for ACR122U NFC reader. No native dependencies - pure FFI over Linux USBFS.",
+    "module": "src/index.ts",
+    "type": "module",
+    "main": "src/index.ts",
+    "exports": {
+        ".": "./src/index.ts"
+    },
+    "files": [
+        "src/**/*.ts",
+        "!src/**/*.test.ts",
+        "LICENSE",
+        "README.md"
+    ],
+    "keywords": [
+        "nfc",
+        "acr122u",
+        "rfid",
+        "mifare",
+        "usb",
+        "ccid",
+        "smartcard",
+        "contactless"
+    ],
+    "license": "MIT",
+    "author": "mjasnikovs",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/mjasnikovs/ACR122U.git"
+    },
+    "homepage": "https://github.com/mjasnikovs/ACR122U#readme",
+    "bugs": {
+        "url": "https://github.com/mjasnikovs/ACR122U/issues"
+    },
+    "engines": {
+        "bun": ">=1.0.0"
+    },
+    "os": [
+        "linux"
+    ],
+    "bin": {
+        "acr122u": "src/cli.ts"
+    },
+    "scripts": {
+        "cli": "bun src/cli.ts",
+        "test": "bun test",
+        "lint": "prettier --log-level warn --write 'src/**/*.{ts,tsx}' && eslint --fix --quiet src && tsc --noEmit",
+        "fmt": "prettier --log-level warn --write"
+    },
+    "devDependencies": {
+        "@types/bun": "1.3.11",
+        "prettier": "3.8.1",
+        "eslint": "9.39.4",
+        "@eslint/js": "9.39.4",
+        "typescript-eslint": "8.58.0",
+        "typescript": "5.9.3",
+        "globals": "15.15.0"
+    },
+    "peerDependencies": {
+        "typescript": ">=5.0.0"
+    }
+}
