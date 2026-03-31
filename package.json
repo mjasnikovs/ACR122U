@@ -1,6 +1,6 @@
 {
     "name": "acr122u",
-    "version": "0.1.0",
+    "version": "0.1.1",
     "description": "Raw USB driver for ACR122U NFC reader. No native dependencies - pure FFI over Linux USBFS.",
     "module": "src/index.ts",
     "type": "module",
