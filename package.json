@@ -5,12 +5,19 @@
     "module": "src/index.ts",
     "type": "module",
     "main": "src/index.ts",
+    "types": "./dist/index.d.ts",
     "exports": {
-        ".": "./src/index.ts"
+        ".": {
+            "bun": "./src/index.ts",
+            "types": "./dist/index.d.ts",
+            "default": "./src/index.ts"
+        }
     },
     "files": [
         "src/**/*.ts",
         "!src/**/*.test.ts",
+        "dist/**/*.d.ts",
+        "dist/**/*.d.ts.map",
         "LICENSE",
         "README.md"
     ],
@@ -46,6 +53,8 @@
     "scripts": {
         "cli": "bun src/cli.ts",
         "test": "bun test",
+        "build": "tsc -p tsconfig.build.json",
+        "prepublishOnly": "bun run build",
         "lint": "prettier --log-level warn --write 'src/**/*.{ts,tsx}' && eslint --fix --quiet src && tsc --noEmit",
         "fmt": "prettier --log-level warn --write"
     },
