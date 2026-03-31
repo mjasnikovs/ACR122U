@@ -375,9 +375,13 @@ export class ACR122U extends EventEmitter {
         let repeat = 0
         let buzzer = 0
 
-        // Final state (static LED)
-        if (options.red) state |= LED_RED_INIT | LED_RED
-        if (options.green) state |= LED_GREEN_INIT | LED_GREEN
+        // Final state (static LED) — bits 2-3 are state masks that enable bits 0-1
+        // LED_RED_BLINK (0x04) is actually the red state mask (bit 2)
+        // LED_GREEN_BLINK (0x08) is actually the green state mask (bit 3)
+        if (options.red !== undefined) state |= LED_RED_BLINK // enable red state update
+        if (options.green !== undefined) state |= LED_GREEN_BLINK // enable green state update
+        if (options.red) state |= LED_RED
+        if (options.green) state |= LED_GREEN
 
         // Blink configuration
         if (options.blink) {
